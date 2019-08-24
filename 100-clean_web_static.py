@@ -2,12 +2,10 @@
 Fabric 100-clean_web_static.py file to web servers
 """
 
-from fabric.api import *
-from fabric.contrib.files import exists
-import os
-
+from fabric.api import env, local, put, run
+from datetime import datetime
+from os.path import exists, isdir
 env.hosts = ['104.196.127.61', '35.229.87.105']
-
 
 @runs_once
 def clean_local(number=0):
