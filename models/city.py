@@ -1,15 +1,17 @@
 #!/usr/bin/python
-""" holds class City"""
+"""
+Class City
+"""
 import models
 from models.base_model import BaseModel, Base
 from os import getenv
 import sqlalchemy
-from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
+from sqlalchemy import Column, String, ForeignKey
 
 
 class City(BaseModel, Base):
-    """Representation of city """
+    """The City class"""
     if models.storage_t == "db":
         __tablename__ = 'cities'
         state_id = Column(String(60), ForeignKey('states.id'), nullable=False)
@@ -20,5 +22,5 @@ class City(BaseModel, Base):
         name = ""
 
     def __init__(self, *args, **kwargs):
-        """initializes city"""
+        """Constructor"""
         super().__init__(*args, **kwargs)

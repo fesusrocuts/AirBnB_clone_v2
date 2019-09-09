@@ -10,7 +10,7 @@ from sqlalchemy.orm import relationship
 
 
 class State(BaseModel, Base):
-    """Representation of state """
+    """The State class"""
     if models.storage_t == "db":
         __tablename__ = 'states'
         name = Column(String(128), nullable=False)
@@ -19,13 +19,15 @@ class State(BaseModel, Base):
         name = ""
 
     def __init__(self, *args, **kwargs):
-        """initializes state"""
+        """Constructor"""
         super().__init__(*args, **kwargs)
 
     if models.storage_t != "db":
         @property
         def cities(self):
-            """getter for list of city instances related to the state"""
+            """
+            getter data between city and state instance
+            """
             city_list = []
             all_cities = models.storage.all(City)
             for city in all_cities.values():
